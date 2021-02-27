@@ -1,0 +1,19 @@
+<%#そもそものDB名を変更%>
+
+<div class="card">
+  <%#<%= link_to image_tag("プロトタイプの画像", class: :card__img ), root_path%>
+  <%#上記はそのまま残しておく%>
+  <%= link_to image_tag(prototype.image , class: :card__img ), prototype_path(prototype.id)%>
+  <div class="card__body">
+    <%= link_to prototype.title , prototype_path(prototype.id), class: :card__title%>
+
+    <p class="card__summary">
+      <%#= "プロトタイプのキャッチコピー" %>
+      <%= prototype.catch_copy %>
+    </p>
+
+    <%= link_to "by #{prototype.user.name}" , user_path(prototype.user), class: :card__user %>
+    <%#他人の名前でもcurrent_user.idを取得してしまう%>
+
+  </div>
+</div>
