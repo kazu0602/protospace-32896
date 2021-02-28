@@ -28,10 +28,15 @@ class PrototypesController < ApplicationController
   #showについてはpictweetを参考にしている。
 
   def edit
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+    #unless user_id
+      #redirect_to action: :index
+    #end
+    #@prototype = Prototype.find(params[:id])
+    #上記を編集し直す。
     @prototype = Prototype.find(params[:id])
+    unless @prototype.user == current_user
+      redirect_to root_path
+    end
   end
 
   def update
